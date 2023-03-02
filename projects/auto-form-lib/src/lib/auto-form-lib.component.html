@@ -1,0 +1,36 @@
+<form [formGroup]="form" class="flex flex-row flex-wrap gap-row-2 w-full">
+  <div *ngFor="let field of formLayout?.fields" [ngStyle]="{width: field.fieldWidth}">
+    <mat-form-field *ngIf="isTextField(field)" class="w-full">
+      <mat-label>{{field.name}}</mat-label>
+      <input matInput
+             type="text"
+             [required]="isRequiredField(field)"
+             [formControlName]="field.name"/>
+      <mat-error *ngFor="let validation of field?.validators">
+        <span *ngIf="getErrorByValidation(validation, form.get(field.name))">{{getErrorTextByValidation(validation)}}</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="isDateField(field)" class="w-full">
+      <mat-label>{{field.name}}</mat-label>
+      <input matInput
+             type="date"
+             [required]="isRequiredField(field)"
+             [formControlName]="field.name"/>
+      <mat-error *ngFor="let validation of field?.validators">
+        <span *ngIf="getErrorByValidation(validation, form.get(field.name))">{{getErrorTextByValidation(validation)}}</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="isNumberField(field)" class="w-full">
+      <mat-label>{{field.name}}</mat-label>
+      <input matInput
+             type="number"
+             [required]="isRequiredField(field)"
+             [formControlName]="field.name"/>
+      <mat-error *ngFor="let validation of field?.validators">
+        <span *ngIf="getErrorByValidation(validation, form.get(field.name))">{{getErrorTextByValidation(validation)}}</span>
+      </mat-error>
+    </mat-form-field>
+  </div>
+</form>

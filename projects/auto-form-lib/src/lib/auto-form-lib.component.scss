@@ -1,0 +1,66 @@
+.file-input {
+  display: none;
+}
+
+.btn-padrao {
+  border: none;
+  padding: 7px;
+  border-radius: 12px 12px 12px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1750A1;
+  color: #EEEEEE;
+  cursor: pointer;
+}
+
+.mt-15 {
+  margin-top: 15px;
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.fit-text-container {
+  word-wrap: break-word;
+}
+
+.btn-close {
+  text-decoration: none;
+  color:#1750A1;
+  margin-right: 10px;
+}
+
+.btn-download {
+  text-decoration: none;
+  color:#1750A1;
+}
+
+.relative {
+  position: relative !important;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.gap-row-2 {
+  gap: 2%;
+}
