@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {FormLayout} from "./models/form-layout.model";
 import {ValidationText} from "./models/validation-text.model";
@@ -16,14 +16,21 @@ export class AutoFormLibComponent implements OnInit {
   @Input('formLayout')
   public formLayout: FormLayout;
 
-  public form: FormGroup;
+  @Input('submitStyles')
+  public submitStyles?: string;
 
+  @Input('validationTextList')
   public validationTextList: ValidationText = {
     required: 'Campo obrigatório',
     minLength: 'Mínimo de caracteres não atingido',
     maxLength: 'Máximo de caracteres excedido',
     email: 'Campo não é um email'
   };
+
+  @Output('getForm')
+  public getForm: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+
+  public form: FormGroup;
 
   constructor(private fb: FormBuilder) {
 
@@ -34,8 +41,8 @@ export class AutoFormLibComponent implements OnInit {
     this.addFormFields();
   }
 
-  public get formArray(): FormArray {
-    return this.form.get('array') as FormArray;
+  public submit(): void {
+    this.getForm.emit(this.form);
   }
 
   public isRequiredField(field: FormFieldLayout): boolean {

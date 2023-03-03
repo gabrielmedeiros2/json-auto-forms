@@ -1,4 +1,4 @@
-<form [formGroup]="form" class="flex flex-row flex-wrap gap-row-2 w-full">
+<form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-row flex-wrap gap-row-2 w-full">
   <div *ngFor="let field of formLayout?.fields" [ngStyle]="{width: field.fieldWidth}">
     <mat-form-field *ngIf="isTextField(field)" class="w-full">
       <mat-label>{{field.name}}</mat-label>
@@ -32,5 +32,10 @@
         <span *ngIf="getErrorByValidation(validation, form.get(field.name))">{{getErrorTextByValidation(validation)}}</span>
       </mat-error>
     </mat-form-field>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="flex flex-row gap-row-2">
+    <ng-content></ng-content>
+    <button mat-button type="submit" [ngClass]="submitStyles">Enviar</button>
   </div>
 </form>
