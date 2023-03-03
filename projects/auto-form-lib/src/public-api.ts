@@ -3,7 +3,7 @@
  */
 
 export * from './lib/services/auto-form-lib.service';
-export * from './lib/auto-form-lib.component';
+export * from './lib/components/auto-form/auto-form-lib.component';
 export * from './lib/auto-form-lib.module';
 export * from './lib/models/form-layout.model';
 export * from './lib/models/form-field-layout.model';

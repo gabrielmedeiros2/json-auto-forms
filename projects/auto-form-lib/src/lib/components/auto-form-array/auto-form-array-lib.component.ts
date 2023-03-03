@@ -1,18 +1,18 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {FormLayout} from "./models/form-layout.model";
-import {ValidationText} from "./models/validation-text.model";
-import {FormFieldValidator} from "./models/form-field-validator.model";
-import {FormFieldValidatorEnum} from "./enums/form-field-validator.enum";
-import {FormFieldLayout} from "./models/form-field-layout.model";
-import {FormFieldType} from "./enums/form-field-type.enum";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormLayout} from "../../models/form-layout.model";
+import {ValidationText} from "../../models/validation-text.model";
+import {FormFieldValidator} from "../../models/form-field-validator.model";
+import {FormFieldValidatorEnum} from "../../enums/form-field-validator.enum";
+import {FormFieldLayout} from "../../models/form-field-layout.model";
+import {FormFieldType} from "../../enums/form-field-type.enum";
 
 @Component({
   selector: 'auto-form',
   templateUrl: 'auto-form-lib.component.html',
   styleUrls: ['auto-form-lib.component.scss']
 })
-export class AutoFormLibComponent implements OnInit {
+export class AutoFormArrayLibComponent implements OnInit {
   @Input('formLayout')
   public formLayout: FormLayout;
 
@@ -31,13 +31,17 @@ export class AutoFormLibComponent implements OnInit {
   public getForm: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
   public form: FormGroup;
+  public childForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
 
   }
 
   ngOnInit(): void {
-    this.form = this.fb.group({});
+    this.form = this.fb.group({
+      array: this.fb.array([])
+    });
+    this.childForm = this.fb.group({});
     this.addFormFields();
   }
 
@@ -46,7 +50,7 @@ export class AutoFormLibComponent implements OnInit {
   }
 
   public isRequiredField(field: FormFieldLayout): boolean {
-    const validator = field.validators?.find((val: { nome: FormFieldValidatorEnum; }) => val?.nome === FormFieldValidatorEnum.REQUIRED);
+    const validator = field.validators?.find(val => val.name === FormFieldValidatorEnum.REQUIRED);
     return (validator !== null && validator !== undefined);
   }
 
@@ -94,11 +98,11 @@ export class AutoFormLibComponent implements OnInit {
 
   private addFormFields(): void {
     for (const field of this.formLayout.fields) {
-      this.form.addControl(field.name, this.createControl(field.validators));
+      this.form.addControl(field.name, this.createControl(field?.validators));
     }
   }
 
-  private createControl(validators: FormFieldValidator[]): FormControl {
+  private createControl(validators: FormFieldValidator[] | undefined): FormControl {
     const validatorsList: any[] = [];
     if(validators) {
       for (const validator of validators) {
