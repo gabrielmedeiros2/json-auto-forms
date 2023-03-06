@@ -1,5 +1,7 @@
 {
-  "name": "auto-form-lib",
+  "name": "json-auto-forms",
+  "author": "Gabriel Medeiros",
+  "license": "MIT",
   "version": "0.1.0",
   "peerDependencies": {
     "@angular/common": "^14.1.0",
