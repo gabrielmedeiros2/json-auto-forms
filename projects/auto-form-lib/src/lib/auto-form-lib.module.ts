@@ -4,6 +4,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatDividerModule} from "@angular/material/divider";
 import {MaterialCustomModule} from "./modules/material.module";
 import {AutoFormArrayLibComponent} from "./components/auto-form-array/auto-form-array-lib.component";
+import {MatListModule} from "@angular/material/list";
+import {MatRadioModule} from "@angular/material/radio";
 
 
 
@@ -12,11 +14,13 @@ import {AutoFormArrayLibComponent} from "./components/auto-form-array/auto-form-
     AutoFormLibComponent,
     AutoFormArrayLibComponent
   ],
-  imports: [
-    ReactiveFormsModule,
-    MatDividerModule,
-    MaterialCustomModule
-  ],
+    imports: [
+        ReactiveFormsModule,
+        MatDividerModule,
+        MaterialCustomModule,
+        MatListModule,
+        MatRadioModule
+    ],
   exports: [
     AutoFormLibComponent,
     AutoFormArrayLibComponent
