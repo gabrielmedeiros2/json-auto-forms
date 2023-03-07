@@ -88,3 +88,96 @@ In the HTML, insert the library tag making references to the previous steps conf
 ```html
 <auto-form [formLayout]="myForm" (submitForm)="mySubmittedValues($event)"></auto-form>
 ````
+
+For form array usage:
+
+TS
+```typescript
+export class MyFeatureComponent {
+  myAddFormEventEmmiter: EventEmmiter<any> = new EventEmmiter<any>();
+  ...
+}
+````
+
+HTML
+```html
+<button click="myAddFormEventEmmiter.emit()">Add Form</button>
+<auto-form-array [formLayout]="myForm" [addItem]="myAddFormEventEmmiter" (submitForm)="mySubmittedValues($event)"></auto-form-array>
+````
+
+## Form options
+
+
+### Input types
+```typescript
+  FormFieldType.TEXT_INPUT;
+  FormFieldType.FILE_INPUT;
+  FormFieldType.NUMBER_INPUT;
+  FormFieldType.DATE_INPUT;
+  FormFieldType.DATE_TIME_INPUT;
+  FormFieldType.RADIO_INPUT;
+  FormFieldType.PASSWORD_INPUT;
+  FormFieldType.TEXT_AREA;
+  FormFieldType.SELECTBOX;
+  FormFieldType.CHECKBOX;
+````
+
+### Validator types
+```typescript
+  FormFieldValidatorEnum.REQUIRED;
+  FormFieldValidatorEnum.EMAIL;
+  FormFieldValidatorEnum.MAX_LENGTH;
+  FormFieldValidatorEnum.MIN_LENGTH;
+````
+
+### Custom validator messages
+
+TS
+```typescript
+export class MyFeatureComponent {
+  myCustomValidatorMessages: ValidationText = {
+    required: 'Field is required',
+    email: 'Field must be an email',
+    minLength: 'Field must contain at least x characters',
+    maxLength: 'Field must not contain more than x characters'
+  };
+  ...
+}
+````
+
+HTML
+```html
+<auto-form [formLayout]="myForm" [validationTextList]="myCustomValidatorMessages" (submitForm)="mySubmittedValues($event)"></auto-form>
+````
+
+### Custom submit button styles
+
+CSS
+```css
+.myCustomStyle {
+  backgroud-color: blue;
+  color: white;
+  border-radius: 12px;
+}
+````
+
+TS
+```typescript
+export class MyFeatureComponent {
+  myCustomStyleString: string = 'myCustomStyle';
+  ...
+}
+````
+
+HTML
+```html
+<auto-form [formLayout]="myForm" [submitStyles]="myCustomStyleString" (submitForm)="mySubmittedValues($event)"></auto-form>
+````
+
+### Add more action buttons
+HTML
+```html
+<auto-form [formLayout]="myForm" [submitStyles]="myCustomStyleString" (submitForm)="mySubmittedValues($event)">
+  <button type="button" (click)="goBack()">Go back to previous page</button>
+</auto-form>
+````
