@@ -5,9 +5,8 @@
 </p>
 
 
-[![npm](https://img.shields.io/npm/v/json-auto-forms.svg)](https://www.npmjs.com/package/json-auto-forms)
-[![npm downloads](https://img.shields.io/npm/dt/json-auto-forms.svg)](https://npmjs.org/json-auto-forms)
-[![npm](https://img.shields.io/npm/dm/json-auto-forms.svg)](https://www.npmjs.com/package/json-auto-forms)
+[![npm](https://img.shields.io/npm/v/@gabrielmedeiros2/json-auto-forms.svg)](https://www.npmjs.com/package/@gabrielmedeiros2/json-auto-forms)
+[![npm downloads](https://img.shields.io/npm/dt/@gabrielmedeiros2/json-auto-forms.svg)](https://npmjs.org/@gabrielmedeiros2/json-auto-forms)
 
 [![GitHub contributors](https://img.shields.io/github/contributors/gabrielmedeiros2/json-auto-forms.svg?style=flat)](https://github.com/gabrielmedeiros2/json-auto-forms)
 [![GitHub stars](https://img.shields.io/github/stars/gabrielmedeiros2/json-auto-forms.svg?label=GitHub%20Stars&style=flat)](https://github.com/gabrielmedeiros2/json-auto-forms)
