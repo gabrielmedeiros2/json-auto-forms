@@ -8,6 +8,7 @@ export interface FormFieldLayout {
   type: FormFieldType,
   fieldWidth: string,
   order: number,
+  id?: string,
   validators?: FormFieldValidator[],
   dataList?: FormDataList[],
 }
