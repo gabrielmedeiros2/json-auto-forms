@@ -1,11 +1,12 @@
 <form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-row flex-wrap gap-row-2 w-full">
-  <div *ngFor="let field of formLayout?.fields" [ngStyle]="{width: field.fieldWidth}">
+  <div *ngFor="let field of formLayout?.fields; let idx = index" [ngStyle]="{width: field.fieldWidth}">
     <mat-form-field *ngIf="service.isTextField(field)" class="w-full">
       <mat-label>{{field.name}}</mat-label>
       <input matInput
              type="text"
              [required]="service.isRequiredField(field)"
-             [formControlName]="field.name"/>
+             [formControlName]="field.name"
+             [id]="service.setId(field.id, idx)"/>
       <mat-error *ngFor="let validation of field?.validators">
         <span *ngIf="service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
       </mat-error>
@@ -16,7 +17,8 @@
       <input matInput
              type="date"
              [required]="service.isRequiredField(field)"
-             [formControlName]="field.name"/>
+             [formControlName]="field.name"
+             [id]="service.setId(field.id, idx)"/>
       <mat-error *ngFor="let validation of field?.validators">
         <span *ngIf="service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
       </mat-error>
@@ -27,7 +29,8 @@
       <input matInput
              type="number"
              [required]="service.isRequiredField(field)"
-             [formControlName]="field.name"/>
+             [formControlName]="field.name"
+             [id]="service.setId(field.id, idx)"/>
       <mat-error *ngFor="let validation of field?.validators">
         <span *ngIf="service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
       </mat-error>
@@ -38,7 +41,8 @@
       <input matInput
              type="datetime-local"
              [required]="service.isRequiredField(field)"
-             [formControlName]="field.name"/>
+             [formControlName]="field.name"
+             [id]="service.setId(field.id, idx)"/>
       <mat-error *ngFor="let validation of field?.validators">
         <span *ngIf="service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
       </mat-error>
@@ -49,7 +53,8 @@
       <input matInput
              type="password"
              [required]="service.isRequiredField(field)"
-             [formControlName]="field.name"/>
+             [formControlName]="field.name"
+             [id]="service.setId(field.id, idx)"/>
       <mat-error *ngFor="let validation of field?.validators">
         <span *ngIf="service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
       </mat-error>
@@ -57,7 +62,7 @@
 
     <div *ngIf="service.isTextareaField(field)" class="w-full">
       <mat-label>{{field.name}}</mat-label>
-      <textarea matInput [formControlName]="field.name" [required]="service.isRequiredField(field)" rows="5"></textarea>
+      <textarea matInput [formControlName]="field.name" [required]="service.isRequiredField(field)" rows="5" [id]="service.setId(field.id, idx)"></textarea>
       <mat-error *ngFor="let validation of field?.validators">
         <span *ngIf="service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
       </mat-error>
@@ -65,7 +70,7 @@
 
     <div *ngIf="service.isFileField(field)" class="w-full">
       <mat-label>{{field.name}}</mat-label>
-      <input type="file" [formControlName]="field.name" [required]="service.isRequiredField(field)"/>
+      <input type="file" [formControlName]="field.name" [required]="service.isRequiredField(field)" [id]="service.setId(field.id, idx)"/>
       <mat-error *ngFor="let validation of field?.validators">
         <span *ngIf="service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
       </mat-error>
@@ -73,7 +78,7 @@
 
     <mat-form-field *ngIf="service.isSelectboxField(field)" class="w-full">
       <mat-label>{{field.name}}</mat-label>
-      <mat-select [required]="service.isRequiredField(field)" [formControlName]="field.name">
+      <mat-select [required]="service.isRequiredField(field)" [formControlName]="field.name" [id]="service.setId(field.id, idx)">
         <mat-option *ngFor="let option of field.dataList" [value]="option.data">{{option.displayedData}}</mat-option>
       </mat-select>
       <mat-error *ngFor="let validation of field?.validators">
@@ -83,14 +88,14 @@
 
     <div *ngIf="service.isCheckboxField(field)" class="w-full">
       <mat-label>{{field.name}}</mat-label>
-      <mat-selection-list [formControlName]="field.name">
+      <mat-selection-list [formControlName]="field.name" [id]="service.setId(field.id, idx)">
         <mat-list-option *ngFor="let option of field.dataList" [value]="option.data">{{option.displayedData}}</mat-list-option>
       </mat-selection-list>
     </div>
 
     <div *ngIf="service.isRadioField(field)" class="w-full">
       <mat-label>{{field.name}}</mat-label>
-      <mat-radio-group [formControlName]="field.name">
+      <mat-radio-group [formControlName]="field.name" [id]="service.setId(field.id, idx)">
         <mat-radio-button *ngFor="let option of field.dataList" [value]="option.data">{{option.displayedData}}</mat-radio-button>
       </mat-radio-group>
     </div>

@@ -88,6 +88,14 @@ export class AutoFormLibService {
     }
   }
 
+  public setId(id: any, idx: number) {
+    if(!id) {
+      id = 'field-'+idx;
+    }
+
+    return id;
+  }
+
   createControl(validators: FormFieldValidator[] | undefined): FormControl {
     const validatorsList: any[] = [];
     if(validators) {
