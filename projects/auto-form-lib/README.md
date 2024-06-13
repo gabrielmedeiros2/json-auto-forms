@@ -22,14 +22,14 @@ Import **json-auto-forms** module
 
 ```typescript
 @NgModule({
-    declarations: [
-        ...
-    ],
-    imports: [
-        ...
-        AutoFormLibModule,
-    ]
+  declarations: [
     ...
+  ],
+  imports: [
+    ...
+      AutoFormLibModule,
+  ]
+  ...
 })
 ...
 ````
@@ -55,6 +55,7 @@ export class MyFeatureComponent {
         type: FormFieldType.TEXT_INPUT,
         fieldWidth: '100%',
         order: 1,
+        useMatError: true,
         validators: [
           {
             name: FormFieldValidatorEnum.REQUIRED
@@ -66,18 +67,20 @@ export class MyFeatureComponent {
         type: FormFieldType.NUMBER_INPUT,
         fieldWidth: '49%',
         order: 2,
+        useMatError: true
       },
       {
         name: 'Date Field',
         type: FormFieldType.DATE_INPUT,
         fieldWidth: '49%',
         order: 3,
+        useMatError: true
       },
     ]
   }
-  
+
   public mySubmittedValues(form: FormGroup): void {
-      console.log(form.getRawValue());
+    console.log(form.getRawValue());
   }
 }
 ````
@@ -94,7 +97,7 @@ TS
 ```typescript
 export class MyFeatureComponent {
   myAddFormEventEmmiter: EventEmmiter<any> = new EventEmmiter<any>();
-  ...
+  /* Your code here */
 }
 ````
 
@@ -127,20 +130,60 @@ HTML
   FormFieldValidatorEnum.EMAIL;
   FormFieldValidatorEnum.MAX_LENGTH;
   FormFieldValidatorEnum.MIN_LENGTH;
+  FormFieldValidatorEnum.FUNCTION;
 ````
+
+### Custom Validators
+On this version, now it's possible to create your own custom validators. To archieve that, use the new validator type "function".
+
+```typescript
+import {AbstractControl, ValidationErrors, ValidatorFn} from "@angular/forms";
+
+// Create your custom validator
+const myCustomValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+    if(control.value === 'invalid') {
+        const error = {customValidator: true};
+        control.setErrors(error);
+        return error;
+    }
+    
+    return null;
+}
+
+const form = {
+  /* Form configurations */
+  fields: [
+    {
+      name: 'Text Field',
+      type: FormFieldType.TEXT_INPUT,
+      fieldWidth: '100%',
+      order: 1,
+      useMatError: true,
+      validators: [
+        {
+          name: FormFieldValidatorEnum.FUNCTION,
+          function: myCustomValidator
+        }
+      ]
+    },
+    /* Other fields */
+  ]
+}
+```
 
 ### Custom validator messages
 
 TS
 ```typescript
 export class MyFeatureComponent {
-  myCustomValidatorMessages: ValidationText = {
+  public myCustomValidatorMessages: ValidationText = {
     required: 'Field is required',
     email: 'Field must be an email',
     minLength: 'Field must contain at least x characters',
-    maxLength: 'Field must not contain more than x characters'
+    maxLength: 'Field must not contain more than x characters',
+    function: 'Field validation failed'
   };
-  ...
+  /* Your component code here */
 }
 ````
 
@@ -164,7 +207,7 @@ TS
 ```typescript
 export class MyFeatureComponent {
   myCustomStyleString: string = 'myCustomStyle';
-  ...
+...
 }
 ````
 
