@@ -1,6 +1,7 @@
 export interface ValidationText {
-  required: string,
-  minLength: string,
-  maxLength: string,
-  email: string
+  required: string;
+  minLength: string;
+  maxLength: string;
+  email: string;
+  function: string;
 }

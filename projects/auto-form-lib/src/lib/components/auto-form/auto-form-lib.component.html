@@ -8,7 +8,7 @@
              [formControlName]="field.name"
              [id]="service.setId(field.id, idx)"/>
       <mat-error *ngFor="let validation of field?.validators">
-        <span *ngIf="service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
+        <span *ngIf="field.useMatError && service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
       </mat-error>
     </mat-form-field>
 
@@ -20,7 +20,7 @@
              [formControlName]="field.name"
              [id]="service.setId(field.id, idx)"/>
       <mat-error *ngFor="let validation of field?.validators">
-        <span *ngIf="service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
+        <span *ngIf="field.useMatError && service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
       </mat-error>
     </mat-form-field>
 
@@ -32,7 +32,7 @@
              [formControlName]="field.name"
              [id]="service.setId(field.id, idx)"/>
       <mat-error *ngFor="let validation of field?.validators">
-        <span *ngIf="service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
+        <span *ngIf="field.useMatError && service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
       </mat-error>
     </mat-form-field>
 
@@ -44,7 +44,7 @@
              [formControlName]="field.name"
              [id]="service.setId(field.id, idx)"/>
       <mat-error *ngFor="let validation of field?.validators">
-        <span *ngIf="service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
+        <span *ngIf="field.useMatError && service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
       </mat-error>
     </mat-form-field>
 
@@ -56,7 +56,7 @@
              [formControlName]="field.name"
              [id]="service.setId(field.id, idx)"/>
       <mat-error *ngFor="let validation of field?.validators">
-        <span *ngIf="service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
+        <span *ngIf="field.useMatError && service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
       </mat-error>
     </mat-form-field>
 
@@ -64,7 +64,7 @@
       <mat-label>{{field.name}}</mat-label>
       <textarea matInput [formControlName]="field.name" [required]="service.isRequiredField(field)" rows="5" [id]="service.setId(field.id, idx)"></textarea>
       <mat-error *ngFor="let validation of field?.validators">
-        <span *ngIf="service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
+        <span *ngIf="field.useMatError && service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
       </mat-error>
     </div>
 
@@ -72,7 +72,7 @@
       <mat-label>{{field.name}}</mat-label>
       <input type="file" [formControlName]="field.name" [required]="service.isRequiredField(field)" [id]="service.setId(field.id, idx)"/>
       <mat-error *ngFor="let validation of field?.validators">
-        <span *ngIf="service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
+        <span *ngIf="field.useMatError && service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
       </mat-error>
     </div>
 
@@ -82,7 +82,7 @@
         <mat-option *ngFor="let option of field.dataList" [value]="option.data">{{option.displayedData}}</mat-option>
       </mat-select>
       <mat-error *ngFor="let validation of field?.validators">
-        <span *ngIf="service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
+        <span *ngIf="field.useMatError && service.getErrorByValidation(validation, form.get(field.name))">{{service.getErrorTextByValidation(validation, validationTextList)}}</span>
       </mat-error>
     </mat-form-field>
 

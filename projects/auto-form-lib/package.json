@@ -2,7 +2,7 @@
   "name": "@gabrielmedeiros2/json-auto-forms",
   "author": "Gabriel Medeiros",
   "license": "MIT",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^14.1.0",
     "@angular/core": "^14.1.0",

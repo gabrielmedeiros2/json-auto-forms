@@ -4,11 +4,12 @@ import {FormDataList} from "./form-data-list.model";
 
 
 export interface FormFieldLayout {
-  name: string,
-  type: FormFieldType,
-  fieldWidth: string,
-  order: number,
-  id?: string,
-  validators?: FormFieldValidator[],
-  dataList?: FormDataList[],
+  name: string;
+  type: FormFieldType;
+  fieldWidth: string;
+  order: number;
+  id?: string;
+  validators?: FormFieldValidator[];
+  dataList?: FormDataList[];
+  useMatError: boolean;
 }

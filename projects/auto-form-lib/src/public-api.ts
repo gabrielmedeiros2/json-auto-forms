@@ -13,3 +13,4 @@ export * from './lib/models/validation-text.model';
 export * from './lib/models/form-data-list.model';
 export * from './lib/enums/form-field-type.enum';
 export * from './lib/enums/form-field-validator.enum';
+export * from './lib/core/base-auto-form';

@@ -68,6 +68,8 @@ export class AutoFormLibService {
         return control !== null && control.hasError('maxlength');
       case FormFieldValidatorEnum.EMAIL:
         return control !== null && control.hasError('email');
+      case FormFieldValidatorEnum.FUNCTION:
+        return control !== null && control.invalid;
       default:
         return false;
     }
@@ -83,6 +85,8 @@ export class AutoFormLibService {
         return validationTextList.maxLength;
       case FormFieldValidatorEnum.EMAIL:
         return validationTextList.minLength;
+      case FormFieldValidatorEnum.FUNCTION:
+        return validationTextList.function;
       default:
         return '';
     }
@@ -112,6 +116,9 @@ export class AutoFormLibService {
             break;
           case FormFieldValidatorEnum.EMAIL:
             validatorsList.push(Validators.email);
+            break;
+          case FormFieldValidatorEnum.FUNCTION:
+            validatorsList.push(validator.function);
             break;
           default:
             break;
