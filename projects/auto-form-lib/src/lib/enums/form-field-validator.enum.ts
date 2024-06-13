@@ -3,4 +3,5 @@ export enum FormFieldValidatorEnum {
   MIN_LENGTH,
   MAX_LENGTH,
   EMAIL,
+  FUNCTION
 }
